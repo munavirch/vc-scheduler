@@ -1,1 +1,11 @@
-ECHO is on.
+<?xml version='1.0' encoding='utf-8'?>
+<project name="VC Scheduler">
+	<description>
+		Conference scheduling tool for Tatasky.
+	</description>
+	<target name="composer">
+		<exec executable="composer">
+			<arg value="install">
+		</exec>
+	</target>
+</project>

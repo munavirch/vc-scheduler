@@ -1,0 +1,71 @@
+<h3>Configuration - Endpoint</h3>
+
+<div class="alert alert-warning"><i class="fas fa-exclamation-triangle"></i> Click on each item to edit.</div>
+
+<button class="btn btn-primary" data-toggle="modal" data-target="#addEndpointModal"><i class="fas fa-plus"></i> New Endpoint</button>
+
+<div class="modal fade" id="addEndpointModal" tabindex="-1" role="dialog" aria-labelledby="addEndpointModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Endpoint</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      	<div class="form-group">
+			<label for="Endpoint-input">Endpoint Name:</label>
+			<input type="text" id="Endpoint-input" class="form-control" [(ngModel)]="tempEndpointName">
+      <div class="form-group">
+        <label for="endpoint-location-input">Location:</label>
+        <select class="form-control" id="endpoint-location-input" [(ngModel)]="tempEndpointLocation">
+          <option *ngFor="let location of locations" [value]="location.id">{{ location.name }}</option>
+        </select>
+      </div>
+		</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="addEndpoint($event)">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="editEndpointModal" tabindex="-1" role="dialog" aria-labelledby="addLocationModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Endpoint</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="location-input">Endpoint Name:</label>
+          <input type="text" id="location-input" class="form-control" [(ngModel)]="tempEndpointName">
+        </div>
+        <div class="form-group">
+          <label for="endpoint-location-select">Location:</label>
+          <select id="endpoint-location-select" class="form-control" [(ngModel)]="tempEndpointLocation">
+            <option *ngFor="let location of locations" [value]="location.id">{{ location.name }}</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="editEndpoint($event)">Update</button>
+        <button type="button" class="btn btn-primary" (click)="deleteEndpoint($event)">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="list-group" style="margin-top:20px;">
+	<div *ngFor="let endpoint of endpoints" class="list-group-item" (click)="showEditModal(endpoint)">
+		{{ endpoint.name }} @ {{ endpoint.location.name }}
+	</div>
+</div>

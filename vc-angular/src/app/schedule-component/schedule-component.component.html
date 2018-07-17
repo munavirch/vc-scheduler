@@ -1,0 +1,113 @@
+<h3>Schedule</h3>
+<div style="width:600px;">
+	<div class="card">
+		<div class="card-header">Participants</div>
+		<div class="card-body">
+			<div class="list-group">
+				<div *ngFor="let participant of conference.participants" class="list-group-item">
+					<div>
+						{{ participant.name }} - {{ getEndpointName(participant.endpoint_id) }}
+					</div>
+					<div>
+						<small>{{ participant.mail }}</small>
+					</div>
+				</div>
+			</div>
+			<button class="btn btn-primary" data-toggle="modal" data-target="#addParticipantModal" style="margin-top:10px;"> <i class="fas fa-plus"></i> Add Participant</button>
+		</div>
+	</div><!-- Participants -->
+	<div class="modal fade" id="addParticipantModal" tabindex="-1" role="dialog" aria-labelledby="addMailListModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLabel">Add Participant</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	      	<div class="form-group">
+	      		<label for="participant-name-input">Name</label>
+	      		<input type="text" id="participant-name-input" class="form-control" [(ngModel)]="tempParticipant.name">
+	      	</div>
+	      	<div class="form-group">
+	      		<label for="participant-mail-input">Email</label>
+	      		<input type="text" class="form-control" id="participant-mail-input" [(ngModel)]="tempParticipant.mail" />
+	      	</div>
+	      	<div class="form-group">
+	      		<label for="participant-room-input">Room</label>
+	      		<select id="participant-room-input" [(ngModel)]="tempParticipant.endpoint_id" class="form-control" >
+	      			<option *ngFor="let endpoint of endpoints" [value]="endpoint.id">{{ endpoint.name }} @ {{ endpoint.location.name }}</option>
+	      		</select>
+	      	</div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-primary" (click)="addParticipant($event)">Save changes</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<div class="card" style="margin-top: 20px;">
+		<div class="card-header">Timings</div>
+		<div class="card-body">
+			<div class="form-group">
+				<label for="timings-from">From</label>
+				<input type="datetime-local" id="timings-from" class="form-control" [(ngModel)]="conference.start" >
+			</div>
+			<div class="form-group">
+				<label for="timings-to">To</label>
+				<input type="datetime-local" id="timings-to" class="form-control" [(ngModel)]="conference.end">
+			</div>
+		</div>
+	</div><!-- Timings -->
+	<div class="card" style="margin-top: 20px;">
+		<div class="card-header">Notifiers</div>
+		<div class="card-body">
+			<div class="alert alert-warning"><i class="fas fa-exclamation-triangle"></i> Residential Engineers from respective locations will be added as notifiers by default.</div>
+			<div style="margin-bottom: 10px;" class="list-group">
+				<div class="list-group-item" *ngFor="let item of conference.maillist">
+					{{ item.name }} - {{ item.mail }}
+				</div>
+			</div>
+			<form style="margin-bottom: 10px;">
+				<div class="row">
+					<div class="col">
+						<input type="text" placeholder="Name" class="form-control" [(ngModel)]="tempMailListItem.name" [ngModelOptions]="{standalone: true}">
+					</div>
+					<div class="col">
+						<input type="text" placeholder="Email" class="form-control" [(ngModel)]="tempMailListItem.mail" [ngModelOptions]="{standalone: true}">
+					</div>
+				</div>
+			</form>
+			<button class="btn btn-primary" (click)="addMailListItem()"> <i class="fas fa-plus"></i> Add Notifier</button>
+		</div>
+	</div><!-- Notifiers -->
+	<div class="card" style="margin-top: 20px;">
+		<div class="card-header">Conference Meta</div>
+		<div class="card-body">
+			<div class="form-group">
+				<label for="conf-name">Conference Name</label>
+				<input type="text" id="conf-name" class="form-control" [(ngModel)]="conference.name" >
+			</div>
+			<div class="form-group">
+				<label for="conf-owner">Conference Owner</label>
+				<select id="conf-owner" class="form-control" [(ngModel)]="conference.owner">
+					<option *ngFor="let participant of conference.participants; let i = index" [value]="i">
+						{{ participant.name }}
+					</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="conf-ticket">Ticketing</label>
+				<select [(ngModel)]="conference.ticketing" class="form-control" value="D">
+					<option value="I">Immediate</option>
+					<option value="D">Delayed</option>
+				</select>
+			</div>
+		</div>
+	</div><!-- Meta -->
+	<div style="margin-top: 20px;margin-bottom: 10px;">
+		<button class="btn btn-primary btn-block" (click)="Schedule()">Schedule</button>
+	</div>
+</div>

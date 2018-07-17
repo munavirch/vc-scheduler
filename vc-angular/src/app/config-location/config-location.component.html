@@ -1,0 +1,59 @@
+<h3>Configuration - Location</h3>
+
+<div class="alert alert-warning"><i class="fas fa-exclamation-triangle"></i> Click on each item to edit.</div>
+
+<button class="btn btn-primary" data-toggle="modal" data-target="#addLocationModal"><i class="fas fa-plus"></i> New Location</button>
+
+<div class="modal fade" id="addLocationModal" tabindex="-1" role="dialog" aria-labelledby="addLocationModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Location</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      	<div class="form-group">
+			<label for="location-input">Location Name:</label>
+			<input type="text" id="location-input" class="form-control" [(ngModel)]="tempLocation">
+		</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="addLocation($event)">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="editLocationModal" tabindex="-1" role="dialog" aria-labelledby="addLocationModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Location</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+      <label for="location-input">Location Name:</label>
+      <input type="text" id="location-input" class="form-control" [(ngModel)]="tempLocation">
+    </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="editLocation($event)">Update</button>
+        <button type="button" class="btn btn-primary" (click)="deleteLocation($event)">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="list-group" style="margin-top:20px;">
+	<div *ngFor="let location of locations" class="list-group-item" (click)="showEditModal(location)">
+		{{ location.name }}
+	</div>
+</div>

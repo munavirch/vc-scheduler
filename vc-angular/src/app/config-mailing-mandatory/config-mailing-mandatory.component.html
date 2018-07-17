@@ -1,0 +1,28 @@
+<h3>Configuration - Department</h3>
+
+<div class="alert alert-warning"><i class="fas fa-exclamation-triangle"></i> Click on each item to edit.</div>
+
+<button class="btn btn-primary" data-toggle="modal" data-target="#addDepartmentModal"><i class="fas fa-plus"></i> New Department</button>
+
+<div class="modal fade" id="addDepartmentModal" tabindex="-1" role="dialog" aria-labelledby="addDepartmentModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Department</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      	<div class="form-group">
+			<label for="Department-input">Department Name:</label>
+			<input type="text" id="Department-input" class="form-control" [(ngModel)]="tempDepartmentName">
+		</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="addDepartment($event)">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

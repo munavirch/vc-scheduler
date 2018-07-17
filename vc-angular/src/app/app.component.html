@@ -1,0 +1,28 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<!---<h3 style="padding-bottom:5px;border-bottom:solid 1px #ccc;margin-top: 20px;" class="ng-scope">Upcoming Today in Bangalore</h3>
+<div class="card" style="width: 18rem;" *ngFor="let conf of conferences">
+  <div class="card-body">
+    <h5 class="card-title">{{ conf.title }}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">@ {{ conf.connect_id }}</h6>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <button class="btn btn-primary btn-block">View</button>
+  </div>
+</div> -->
+<div class="row">
+			<div class="col-md-2 col-lg-2 sidebar" style="padding:0px;margin:0px;">
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item"><a routerLink="/">Overview</a></li>
+					<li class="list-group-item"><a routerLink="/schedule">Schedule</a></li>
+					<li class="list-group-item"><a routerLink="track">Track</a></li>
+					<li class="list-group-item"><a routerLink="configure">Configure</a></li>
+					<li class="list-group-item"><a routerLink="monitor">Monitor</a></li>
+				</ul>
+			</div>
+			<div class="col-md-10 col-lg-10">
+				<div style="min-height: 1000px;">
+						<div style="margin-top: 20px;width:600px;">
+							<router-outlet></router-outlet>
+						</div>
+				</div>
+			</div>
+		</div>

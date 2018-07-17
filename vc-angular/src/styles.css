@@ -1,0 +1,89 @@
+/* You can add global styles to this file, and also import other style files */
+.row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+  flex-wrap: wrap;
+}
+.row > [class*='col-'] {
+  display: flex;
+  flex-direction: column;
+}
+body{
+	font-family: 'Open Sans', sans-serif;
+}
+.sidebar{
+/*	background-color: #eee;*/
+	border-right: solid 1px #ccc;
+	position: fixed;
+}
+.nav-sidebar{
+	list-style: none;
+	padding:0px;
+	margin-top:10px;
+}
+.nav-sidebar li{
+	padding:0px;
+}
+.nav-sidebar a{
+	padding:5px 7px;
+	display: block;
+	width: 100%;
+}
+.nav-sidebar a.active{
+	background: #aaa;
+}
+.nav-sidebar a:hover{
+	text-decoration: none;
+	background: #aaa;
+}
+.input-hidden{
+	width:0px;
+	height:0px;
+	margin:0px;
+	padding:0px;
+}
+.user-list{
+	margin-bottom: 10px;
+	padding: 7px 10;
+	border-bottom: solid 1px #ccc;
+}
+.main-loader{
+	display: block; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1800; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+.main-loader-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+	text-align: center;
+}
+
+#short-message{
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 10;
+  opacity: 0;
+  width:300px;
+}
+.short-message-run{
+	animation: flash-message 4s ease-out;
+}
+@keyframes flash-message {
+  0%   { opacity: 0; transform: translateX(-50px); }
+  20% { opacity:1; transform: translateX(0px);  }
+  90%   { opacity: 1; }
+  100% { opacity: 0; }
+}

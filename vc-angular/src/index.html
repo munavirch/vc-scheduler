@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>VcAngular</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" crossorigin="anonymous"></script>
+</head>
+<body>
+	<div class="alert alert-success" id="short-message"></div>
+	<div class="main-loader"  style="display: none;">
+			<div class="main-loader-content">Loading...</div>
+	</div>
+	<nav class="navbar navbar-dark bg-dark navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<div class="navbar-brand">Scheduler</div>
+			</div>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="logout.php"><span class="glyphicon glyphicon-login"></span>Welcome, Munavir CH!  Logout</a></li>
+			</ul>
+		</div>
+	</nav>
+	<div class="container-fluid">
+		<app-root></app-root>
+	</div>
+	<div class="content-fluid" style="border-top:solid 1px #ccc;text-align:center;">&copy; My Company</div>
+</body>
+</html>

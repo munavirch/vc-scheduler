@@ -23,7 +23,7 @@
     <target name="uibuild.init" depends="init">
     	<ant antfile="../build.xml" dir="vc-angular" target="uibuild" inheritAll="true" inheritRefs="true"/>
     </target>
-    <target name="uibuild" depends="init, uibuild.init">
+    <target name="uibuild" depends="init">
     	<exec executable="npm.cmd">
     		<arg value="config"/>
     		<arg value="set"/>

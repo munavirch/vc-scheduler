@@ -1,11 +1,14 @@
 <?xml version='1.0' encoding='utf-8'?>
 <project name="VC Scheduler">
 	<property name="buildtools" value="${basedir}/buildtools"/>
+	<property name="uisource" value="${basedir}/vc-angular"/>
+	<property name="uibuild" value="${uisource}/build"/>
 	<description>
 		Conference scheduling tool for Tatasky.
 	</description>
 	<target name="init">
 		<mkdir dir="${buildtools}"/>
+		<mkdir dir="${uibuild}"/>
 	</target>
 	<target name="composer" description="Install composer packages including require-dev." depends="init">
         <get src="https://getcomposer.org/download/1.2.1/composer.phar" dest="composer.phar"/>
@@ -15,5 +18,10 @@
             <arg value="--prefer-dist"/>
             <arg value="--no-progress"/>
         </exec>
+    </target>
+    <target name="uibuild" depends="init">
+    	<exec executable="ng" failonerror="true">
+    		<arg value="build"/>
+    	</exec>
     </target>
 </project>

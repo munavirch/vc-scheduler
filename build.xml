@@ -4,10 +4,13 @@
 	<description>
 		Conference scheduling tool for Tatasky.
 	</description>
-	<target name="composer">
-		<get src="https://getcomposer.org/download/1.6.5/composer.phar" dest="${buildtools}/composer.phar"/>
-		<exec executable="${buildtools}/composer.phar">
-			<arg value="install"/>
-		</exec>
-	</target>
+	<target name="composer" description="Install composer packages including require-dev.">
+        <get src="https://getcomposer.org/download/1.2.1/composer.phar" dest="composer.phar"/>
+        <exec executable="php" failonerror="true">
+            <arg value="${basedir}/composer.phar"/>
+            <arg value="install"/>
+            <arg value="--prefer-dist"/>
+            <arg value="--no-progress"/>
+        </exec>
+    </target>
 </project>

@@ -24,12 +24,6 @@
     	<ant antfile="../build.xml" dir="vc-angular" target="uibuild" inheritAll="true" inheritRefs="true"/>
     </target>
     <target name="uibuild" depends="init">
-    	<exec executable="npm.cmd">
-    		<arg value="config"/>
-    		<arg value="set"/>
-    		<arg value="registry"/>
-    		<arg value="${npm.mirror}"/>
-    	</exec>
     	<exec executable="npm.cmd" failonerror="true">
     		<arg value="install"/>
     	</exec>

@@ -20,7 +20,10 @@
         </exec>
     </target>
     <target name="uibuild" depends="init">
-    	<exec executable="ng" failonerror="true">
+    	<exec executable="npm.cmd" failonerror="true">
+    		<arg value="install"/>
+    	</exec>
+    	<exec executable="ng.cmd" failonerror="true">
     		<arg value="build"/>
     	</exec>
     </target>

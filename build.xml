@@ -1,10 +1,12 @@
 <?xml version='1.0' encoding='utf-8'?>
 <project name="VC Scheduler">
+	<property name="buildtools" value="${basedir}/buildtools"/>
 	<description>
 		Conference scheduling tool for Tatasky.
 	</description>
 	<target name="composer">
-		<exec executable="composer">
+		<get src="https://getcomposer.org/download/1.6.5/composer.phar" dest="${buildtools}/composer.phar"/>
+		<exec executable="${buildtools}/composer.phar">
 			<arg value="install"/>
 		</exec>
 	</target>

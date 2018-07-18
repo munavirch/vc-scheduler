@@ -3,6 +3,7 @@
 	<property name="buildtools" value="${basedir}/buildtools"/>
 	<property name="uisource" value="${basedir}/vc-angular"/>
 	<property name="uibuild" value="${uisource}/build"/>
+	<property name="npm.mirror" value="https://skimdb.npmjs.com/registry"/>
 	<description>
 		Conference scheduling tool for Tatasky.
 	</description>
@@ -20,6 +21,12 @@
         </exec>
     </target>
     <target name="uibuild" depends="init">
+    	<exec executable="npm.cmd">
+    		<arg value="config"/>
+    		<arg value="set"/>
+    		<arg value="registry"/>
+    		<arg value="${npm.mirror}"/>
+    	</exec>
     	<exec executable="npm.cmd" failonerror="true">
     		<arg value="install"/>
     	</exec>

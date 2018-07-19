@@ -48,3 +48,13 @@ Route::delete('/endpoint/{endpoint}', 'EndpointController@delete');
 Route::get('conference', 'ConferenceController@showAll');
 Route::get('conference/{id}', 'ConferenceController@show');
 Route::post('conference', 'ConferenceController@create');
+
+
+//Config Routes
+Route::get('configure', 'HomeController@index');
+Route::get('configure/location', 'HomeController@index');
+Route::get('configure/department', 'HomeController@index');
+Route::get('configure/endpoint', 'HomeController@index');
+Route::get('configure/mailing-location', 'HomeController@index');
+Route::get('configure/mailing-mandatory', 'HomeController@index');
+Route::get('configure/user', 'HomeController@index');

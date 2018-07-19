@@ -12,22 +12,18 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
-//Auth::routes();
+Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 
 // Location
 Route::get('/location', 'LocationController@showAll');
-
 Route::get('/location/{location}', 'LocationController@show');
-
 Route::post('/location', 'LocationController@create');
-
 Route::patch("/location/{location}", 'LocationController@update');
-
 Route::delete('/location/{location}', 'LocationController@delete');
 
 

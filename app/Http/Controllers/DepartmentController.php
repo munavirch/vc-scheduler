@@ -7,8 +7,12 @@ use App\Department;
 
 class DepartmentController extends Controller
 {
-    public function showAll(){
-    	return Department::all();
+    public function showAll(Request $request){
+        if($request->ajax()){
+    	   return Department::all();
+        }else{
+            return view('index');
+        }
     }
 
     public function show(Department $department){

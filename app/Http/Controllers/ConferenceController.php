@@ -59,16 +59,20 @@ class ConferenceController extends Controller
     	return $this->getConference($id);
     }
 
-    public function showAll(){
-    	$page = request()->query('page', 1);
-    	$conference = Conference::select(['id', 'vcid', 'title', 'start', 'end', 'status', 'owner', 'scheduler'])->get();
-    	$conference = $conference->chunk($this->items_per_page);
-    	if($page < 1){
-    		return $conference[0];
-    	}elseif ($page >= count($conference)) {
-    		return $conference[count($conference)-1];
-    	}
-    	return $conference[$page-1];
+    public function showAll(Request $request){
+        if($request->ajax()){
+        	$page = request()->query('page', 1);
+        	$conference = Conference::select(['id', 'vcid', 'title', 'start', 'end', 'status', 'owner', 'scheduler'])->get();
+        	$conference = $conference->chunk($this->items_per_page);
+        	if($page < 1){
+        		return $conference[0];
+        	}elseif ($page >= count($conference)) {
+        		return $conference[count($conference)-1];
+        	}
+        	return $conference[$page-1];
+        }else{
+            return view('index');
+        }
     }
 
     public function generateVcId($from, $to){

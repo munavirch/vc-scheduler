@@ -8,11 +8,7 @@ use App\Location;
 class LocationController extends Controller
 {
     public function showAll(Request $request){
-        if($request->ajax()){
-    	   return Location::all();
-        }else{
-            return view('index');
-        }
+    	return Location::all();
     }
 
     public function show(Location $location){

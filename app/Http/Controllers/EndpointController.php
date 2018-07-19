@@ -26,11 +26,7 @@ class EndpointController extends Controller
     }
 
     public function showAll(Request $request){
-        if($request->ajax()){
-    	   return Endpoint::with('location')->get();
-        }else{
-            return view('index');
-        }
+    	return Endpoint::with('location')->get();
     }
 
     public function update(Endpoint $endpoint){
